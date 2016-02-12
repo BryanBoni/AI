@@ -1,3 +1,6 @@
+package Maze;
+
+
 /**
  * Class Maze - class for representing search space as a bi-dimensional maze
  */

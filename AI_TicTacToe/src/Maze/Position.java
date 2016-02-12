@@ -1,3 +1,5 @@
+package Maze;
+
 
 
 public class Position {

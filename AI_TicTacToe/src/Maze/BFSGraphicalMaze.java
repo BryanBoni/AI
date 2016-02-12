@@ -1,3 +1,6 @@
+package Maze;
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -5,8 +8,10 @@ import java.awt.image.BufferedImage;
 public class BFSGraphicalMaze extends javax.swing.JFrame {
     JPanel jPanel1 = new JPanel();
     BFS currSearch = null;
+    boolean done = true;
 
     public BFSGraphicalMaze() {
+        
         try {
           initGUI();
         } catch (Exception e) {
@@ -14,6 +19,7 @@ public class BFSGraphicalMaze extends javax.swing.JFrame {
         }
         currSearch = new BFS(10, 10);
         repaint();
+       
     }
 
     public void paint(Graphics g_unused) {

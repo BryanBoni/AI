@@ -1,5 +1,4 @@
-
-
+package Maze;
 public class AbstractSearch {
     public AbstractSearch(int width, int height) {
         maze = new Maze(width, height);

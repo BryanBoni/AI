@@ -1,14 +1,20 @@
+package TicTacToe;
+/*import Maze.*;
+
 public class TicTacToe extends GameSearch {
 
     public boolean tiedPosition(Position p) {
+        return false;
         // code to write
     }
     
     public boolean wonPosition(Position p, boolean player) {
+        return false;
        // code to write
     }
 
     public float positionEvaluation(Position p, boolean player) {
+        return 0;
 	  // code to write
     }
     
@@ -17,11 +23,12 @@ public class TicTacToe extends GameSearch {
     }
     
     public boolean reachedMaxDepth(Position p, int depth) {
+        return false;
       // code to write
     }
         
     public Position [] possibleMoves(Position p, boolean player) {
-        TicTacToePosition pos = (TicTacToePosition)p;
+        Position pos = (Position)p;
         int count = 0;
         for (int i=0; i<9; i++) if (pos.board[i] == 0) count++;
         if (count == 0) return null;
@@ -29,7 +36,7 @@ public class TicTacToe extends GameSearch {
         count = 0;
         for (int i=0; i<9; i++) {
             if (pos.board[i] == 0) {
-                TicTacToePosition pos2 = new  TicTacToePosition();
+                Position pos2 = new  Position();
                 for (int j=0; j<9; j++) pos2.board[j] = pos.board[j];
                 if (player) pos2.board[i] = 1; else pos2.board[i] = -1;
                 ret[count++] = pos2;
@@ -45,7 +52,7 @@ public class TicTacToe extends GameSearch {
             i = ch - 48;
             System.in.read();
         } catch (Exception e) { }
-        TicTacToeMove m = new TicTacToeMove();
+        Move m = new TicTacToeMove();
         m.moveIndex = i;
         TicTacToePosition pos = (TicTacToePosition)p;
         TicTacToePosition pos2 = new  TicTacToePosition();
@@ -63,3 +70,4 @@ public class TicTacToe extends GameSearch {
         ttt.playGame(p);
     }
 }
+*/
