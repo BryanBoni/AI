@@ -1,15 +1,24 @@
+/*
+ Contain code and data required by the BFS class
+
+ */
 package Maze;
+
 public class AbstractSearch {
+
     public AbstractSearch(int width, int height) {
         maze = new Maze(width, height);
         initSearch();
     }
-    public Maze getMaze() { return maze; }
+
+    public Maze getMaze() {
+        return maze;
+    }
     protected Maze maze;
     /*
      * Java type Position (with width and height encoding x and y directions) is used for path finding
      */
-    protected Position [] searchPath = null;
+    protected Position[] searchPath = null; //use to store the path traversed
     protected int pathCount;
     protected int maxDepth;
     protected Position startPos, goalPos, currentPos;
@@ -18,7 +27,7 @@ public class AbstractSearch {
     protected void initSearch() {
         if (searchPath == null) {
             searchPath = new Position[1000];
-            for (int i=0; i<1000; i++) {
+            for (int i = 0; i < 1000; i++) {
                 searchPath[i] = new Position();
             }
         }
@@ -33,15 +42,21 @@ public class AbstractSearch {
         return d1.x == d2.x && d1.y == d2.y;
     }
 
-    public Position [] getPath() {
-      Position [] ret = new Position[maxDepth];
-      for (int i=0; i<maxDepth; i++) {
-        ret[i] = searchPath[i];
-      }
-      return ret;
+    public Position[] getPath() {
+        Position[] ret = new Position[maxDepth];
+        for (int i = 0; i < maxDepth; i++) {
+            ret[i] = searchPath[i];
+        }
+        return ret;
     }
-    protected Position [] getPossibleMoves(Position Pos) {
-        Position tempMoves [] = new Position[4];
+
+    protected Position[] getPossibleMoves(Position Pos) {
+        /*
+        return an array of Position objects
+        that can be moved to and from the specified position, thereby
+        implementing the movement operator
+        */
+        Position tempMoves[] = new Position[4];
         tempMoves[0] = tempMoves[1] = tempMoves[2] = tempMoves[3] = null;
         int x = Pos.x;
         int y = Pos.y;
