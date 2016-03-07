@@ -47,20 +47,16 @@ public class BFS extends AbstractSearch {
         flag for the starting location to true value 
         and adding the starting location to the back of the queue.*/
         PositionQueue queueMaze = new PositionQueue();
-        Position tempPos = new Position(currentPos.x, currentPos.y);
-        
-        alreadyVisited[currentPos.x][currentPos.y] = true;
-        
-        queueMaze.addingQueue(tempPos);
-        
-        
-        
-
+        Position tempPos = new Position(currentPos.x, currentPos.y);   
+        this.alreadyVisited[currentPos.x][currentPos.y] = true;  
+        queueMaze.addingQueue(tempPos);  
         /*
         (2) An outer loop runs until either the queue is empty or the goal : 
 
         */
         boolean goalIsFound = false;
+        Position tempMove[] = this.getPossibleMoves(tempPos);
+        System.out.println("move 1 ="+ tempMove[0] + " move 2 = " + tempMove[1] + " move 3 = " + tempMove[2] + " move 4 = " + tempMove[3]);
         while(queueMaze.isEmpty() != true || goalIsFound == true){
             /*
             the goal is found where :

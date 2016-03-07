@@ -1,7 +1,8 @@
-package TicTacToe;
-import TicTacToe.Position;
+/*
+/*package TicTacToe;*/
+/*import TicTacToe.Position;*/
 /*import Maze.*;*/
-
+/*
 public class TicTacToe extends GameSearch {
 
    
@@ -113,6 +114,6 @@ public class TicTacToe extends GameSearch {
         TicTacToePosition p = new TicTacToePosition();
         TicTacToe ttt = new TicTacToe();
         ttt.playGame(p);
-    }*/
-}
+    }
+}*/
 

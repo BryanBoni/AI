@@ -1,6 +1,5 @@
 /*
  Contain code and data required by the BFS class
-
  */
 package Maze;
 
