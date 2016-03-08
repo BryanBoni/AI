@@ -15,9 +15,10 @@ public class BFSGraphicalMaze extends javax.swing.JFrame {
     boolean done = true;
 
     public BFSGraphicalMaze() {
-
+        Graphics g_unused = null;
         try {
             initGUI();
+            paint(g_unused);
         } catch (Exception e) {
             System.out.println("Interface error: " + e);
         }
@@ -26,6 +27,7 @@ public class BFSGraphicalMaze extends javax.swing.JFrame {
 
     }
 
+ 
     public void paint(Graphics g_unused) {
         if (currSearch == null) {
             return;

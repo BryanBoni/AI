@@ -17,13 +17,13 @@ public class BFS extends AbstractSearch {
     protected class PositionQueue {
         // Class to manage the queue   , structure  
         public int i = 0;
-        public Position queue[];
+        public Position queue[] = new Position[100];
         
         public PositionQueue(){   
         }
         
         protected void addingQueue(Position add){     
-            queue[i] = add;
+            this.queue[i] = add;
             this.i++;
         }
 
@@ -34,6 +34,7 @@ public class BFS extends AbstractSearch {
 
     public BFS(int width, int height) {
         super(width, height);
+        this.alreadyVisited = new boolean[width][height];
         performBFS();
     }
 
@@ -47,8 +48,8 @@ public class BFS extends AbstractSearch {
         flag for the starting location to true value 
         and adding the starting location to the back of the queue.*/
         PositionQueue queueMaze = new PositionQueue();
-        Position tempPos = new Position(currentPos.x, currentPos.y);   
-        this.alreadyVisited[currentPos.x][currentPos.y] = true;  
+        Position tempPos = new Position(0, 0);   
+        //alreadyVisited[0][0] = true;  
         queueMaze.addingQueue(tempPos);  
         /*
         (2) An outer loop runs until either the queue is empty or the goal : 
