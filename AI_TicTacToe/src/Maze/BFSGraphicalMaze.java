@@ -1,4 +1,5 @@
 package Maze;
+
 /*
  The class BFSGraphicalMaze supports the graphical display
  of breadth first search.
@@ -18,7 +19,6 @@ public class BFSGraphicalMaze extends javax.swing.JFrame {
         Graphics g_unused = null;
         try {
             initGUI();
-            paint(g_unused);
         } catch (Exception e) {
             System.out.println("Interface error: " + e);
         }
@@ -27,7 +27,6 @@ public class BFSGraphicalMaze extends javax.swing.JFrame {
 
     }
 
- 
     public void paint(Graphics g_unused) {
         if (currSearch == null) {
             return;
@@ -80,9 +79,7 @@ public class BFSGraphicalMaze extends javax.swing.JFrame {
 
     }
 
-    public static void main(String[] args) {
-        new BFSGraphicalMaze();
-    }
+    
 
     private void initGUI() throws Exception {
 

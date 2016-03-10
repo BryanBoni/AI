@@ -66,6 +66,7 @@ public abstract class GameSearch {
             startingPosition = makeMove(startingPosition, HUMAN);
             printPosition(startingPosition);
             if (wonPosition(startingPosition, HUMAN)) {
+                 //Impossible because the Human will never won.
                 System.out.println("Human won");
                 break;
             }
