@@ -1,16 +1,52 @@
 package TicTacToe;
 
+/*
+    The TicTacToe class defines the methods tiedPosition, 
+    wonPosition, positionEvaluation, printPosition, reachedMaxDepth, 
+    possibleMoves and makeMove from the GameSearch base class. 
+    These methods must always cast arguments of class type Position 
+    and Move to TicTacToePosition and TicTacToeMove.
+ */
 public class TicTacToe extends GameSearch {
 
     public boolean tiedPosition(Position p) {
         //return true if the given position is a tie situation.
+        boolean isTie = true;
+        int[] currentBoard = ((TicTacToePosition) p).getBoard();
 
-        return true;
+        for (int i = 0; i < 9; i++) {
+            if (currentBoard[i] == 0) {
+                return isTie = false;//imediately return false if it's not a tie situation.
+            }
+        }
+        return isTie;
     }
 
     public boolean wonPosition(Position p, boolean player) {
-        //return true it the input position is won for the indicated player.
-        return true;
+        /*
+        This function test for all possible winning patterns.
+        Return true it the input position is won for the indicated player.
+         */
+        boolean isWinning = false;
+
+        int[] currentBoard = ((TicTacToePosition) p).getBoard();
+        int currPlayer = (player == true) ? 1 : -1;//if it's the player, currPlayer = 1 else -1.
+
+        if ((currentBoard[0] == currPlayer && currentBoard[4] == currPlayer && currentBoard[8] == currPlayer)) {//analysing the line winnning situation
+            isWinning = true;
+        } else if ((currentBoard[2] == currPlayer && currentBoard[4] == currPlayer && currentBoard[6] == currPlayer)) {
+            isWinning = true;
+        }
+
+        for (int i = 0; i < 3; i++) {
+            //analysing the diagonal winning situation
+            if ((currentBoard[i] == currPlayer && currentBoard[i + 3] == currPlayer && currentBoard[i + 6] == currPlayer)) {
+                isWinning = true;
+            } else if ((currentBoard[3 * i] == currPlayer && currentBoard[3 * i + 1] == currPlayer && currentBoard[3 * i + 2] == currPlayer)) {
+                isWinning = true;
+            }
+        }
+        return isWinning;
     }
 
     public float positionEvaluation(Position p, boolean player) {
@@ -19,11 +55,16 @@ public class TicTacToe extends GameSearch {
         If it is called switching the player for the same board position, 
         then the returned value is the negative of the value calculated for the opposing player.
          */
-        return 0.0f;
+        if(!(wonPosition(p, player))){
+            return -10.0f;
+        }else{
+            return +10.0f;
+        }
     }
 
     public void printPosition(Position p) {
         // display a text-based representation of the board
+        System.out.println("The Current Board :\n" + ((TicTacToePosition)p).toString());
     }
 
     public boolean reachedMaxDepth(Position p, int depth) {
@@ -31,8 +72,12 @@ public class TicTacToe extends GameSearch {
         return a Boolean true value if the search process has reached a satisfactory depth. 
         For the tic-tac-toe program, 
         the method reachedMaxDepth does not return true unless either side has won the game or the board is full.
-        */
-        return true;
+         */
+        if(wonPosition(p,false) ||  tiedPosition(p) || wonPosition(p,true)) {
+            return true;
+        }else{
+            return false;
+        }    
     }
 
     public Position[] possibleMoves(Position p, boolean player) {

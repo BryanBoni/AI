@@ -17,6 +17,7 @@ public class launcher {
                 + "     (1) launch the maze program.\n"
                 + "     (2) launch the TicTacToe program.\n"
                 + "     (3) exit.");
+        System.out.print("> ");
         choice = sc.nextInt();
         switch (choice) {
             case 1:

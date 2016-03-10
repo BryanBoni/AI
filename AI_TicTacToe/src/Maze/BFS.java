@@ -11,11 +11,13 @@ package Maze;
 
 import java.util.Queue;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class BFS extends AbstractSearch {
 
     protected boolean[][] alreadyVisited; // keeps us from searching the same location twice
     protected Position[][] predecessor;
+    BFS currSearch = null;
 
     protected class PositionQueue {
 
@@ -57,7 +59,7 @@ public class BFS extends AbstractSearch {
             flag for the starting location to true value 
             and adding the starting location to the back of the queue.
          */
-        
+
         alreadyVisited = new boolean[width][height];
         predecessor = new Position[width][height];
         PositionQueue queueMaze = new PositionQueue();
@@ -70,7 +72,7 @@ public class BFS extends AbstractSearch {
         alreadyVisited[startPos.x][startPos.y] = true;
         System.out.println("Scanning possibilities...");
         //(2) An outer loop runs until either the queue is empty or the goal is found
-        while(queueMaze.topQueue()!= null && !equals(queueMaze.topQueue(),goalPos)) {
+        while (queueMaze.topQueue() != null && !equals(queueMaze.topQueue(), goalPos)) {
             /*
             steps of this loop:
             
@@ -99,7 +101,7 @@ public class BFS extends AbstractSearch {
             }
             for (int i = 0; i < 4; i++) {
                 if (possibleMoves[i] != null && alreadyVisited[possibleMoves[i].x][possibleMoves[i].y] == false) {
-                    
+
                     alreadyVisited[possibleMoves[i].x][possibleMoves[i].y] = true;
                     queueMaze.addingQueue(possibleMoves[i]);
                     predecessor[possibleMoves[i].x][possibleMoves[i].y] = queueMaze.topQueue();
@@ -117,9 +119,8 @@ public class BFS extends AbstractSearch {
          */
         if (queueMaze.topQueue() == null) {
             System.out.println("It's not possible to finish this maze !");
-            //System.exit(0);
         } else {
-            
+
             int i = 0;
             Position precPos = goalPos;
             System.out.println("Tracing the path...");
@@ -129,7 +130,7 @@ public class BFS extends AbstractSearch {
                 i++;
             }
             maxDepth = i + 1;
-            System.out.println("Done !\n Maze maximum depth = " + maxDepth);
+            System.out.println("Done !\nMaze maximum depth = " + maxDepth + "\n");
         }
     }
 

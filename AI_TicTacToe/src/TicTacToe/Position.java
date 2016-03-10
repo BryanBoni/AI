@@ -1,4 +1,7 @@
+/*
+This class contain no data and methods at all and are used as placeholder for derived classes for specific games.
+*/
 package TicTacToe;
 
-abstract public class Position {
+public abstract class Position {
 }

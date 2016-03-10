@@ -4,10 +4,10 @@ package Maze;
  The class BFSGraphicalMaze supports the graphical display
  of breadth first search.
  */
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Scanner;
 
 public class BFSGraphicalMaze extends javax.swing.JFrame {
 
@@ -16,7 +16,14 @@ public class BFSGraphicalMaze extends javax.swing.JFrame {
     boolean done = true;
 
     public BFSGraphicalMaze() {
-        Graphics g_unused = null;
+        doMaze();
+    }
+
+    public void doMaze() {
+        /*
+        This function contain the initialisation of the maze 
+        (graphical part and after the back-end part).
+         */
         try {
             initGUI();
         } catch (Exception e) {
@@ -24,7 +31,36 @@ public class BFSGraphicalMaze extends javax.swing.JFrame {
         }
         currSearch = new BFS(10, 10);
         repaint();
+        endChoice();
+    }
 
+    public void endChoice() {
+        /*
+         This function is used to make a choice about retrying or ending
+         the maze program.
+         If yes re do the maze and call recusively this function,
+         Else ending the program.
+         */
+        boolean check = false;
+        do {
+            Scanner sc = new Scanner(System.in);
+            String choice;
+            System.out.println("Do you want to retry ? (Y/N)");
+            System.out.print("> ");
+            choice = sc.nextLine();
+            if (choice.equals("Y") || choice.equals("y")) {
+                check = true;
+                currSearch = new BFS(10, 10);
+                repaint();
+                endChoice();
+            } else if (choice.equals("N") || choice.equals("n")) {
+                check = true;
+                System.out.println("Program exit...");
+                System.exit(0);
+            } else {
+                System.out.println("Please type a valide answer !");
+            }
+        } while (check == false); //loop while the answer given is false or not taken.
     }
 
     public void paint(Graphics g_unused) {
@@ -78,8 +114,6 @@ public class BFSGraphicalMaze extends javax.swing.JFrame {
         g.drawImage(image, 30, 40, 320, 320, null);
 
     }
-
-    
 
     private void initGUI() throws Exception {
 
