@@ -98,13 +98,14 @@ public abstract class GameSearch {
     }
 
     public void playGame(Position startingPosition) {
+        printPosition(startingPosition);
         while (true) {
             System.out.println("Human move (type 0 to 8 to place your cross) :");
             System.out.print("> ");
             startingPosition = makeMove(startingPosition, HUMAN);
             printPosition(startingPosition);
             if (wonPosition(startingPosition, HUMAN)) {
-                //Impossible because the Human will never won, or else that mean you're a cheater !.
+                //Impossible the Human will never won if we implementing entirely the minimax algorithm, or else that mean you're a cheater !.
                 System.out.println("Human won");
                 endChoice();
             }

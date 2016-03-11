@@ -17,6 +17,7 @@ public class TicTacToePosition extends Position {
     int[] board;
 
     public TicTacToePosition() {
+        //Setting the game variable
         BLANK = 0;
         HUMAN = 1;
         PROGRAM = -1;
@@ -33,7 +34,7 @@ public class TicTacToePosition extends Position {
             } else if (board[i] == 1) {
                 strBoard += " X " + "|";
             } else {
-                strBoard += "   " + "|";
+                strBoard += " "+ i +" " + "|";
             }
             if (i == 2 || i == 5) {
                 strBoard += "\n|---+---+---|\n|";
